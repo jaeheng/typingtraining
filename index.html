@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/main.css">
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
-<body onselectstart="return false">
+<body onselectstart="return true">
     <div class="page" id="app">
         <h1 class="title"><span @click="route = 'index'">Typing training</span> <span @click="route = 'top'" class="top-link">排行榜</span></h1>
         <template v-if="route === 'index'">
@@ -20,7 +20,7 @@
                 <div class="paraph" v-html="item.paraphDisplay"></div>
                 <div class="paraph input">
                     {{ item.paraph }}
-                    <input type="text" class="input-box" v-model="item.input" @input="compareWords(item)" :autofocus="active === index" :ref="'input-' + index" @keyup.enter="nextLine(index)" :maxlength="item.paraph.length" onpaste="return false;" :disabled="time === 0" @keydown.tab.prevent>
+                    <input type="text" class="input-box" v-model="item.input" @input="compareWords(item)" :autofocus="active === index" :ref="'input-' + index" @keyup.enter="nextLine(index)" :maxlength="item.paraph.length" onpaste="return true;" :disabled="time === 0" @keydown.tab.prevent>
                 </div>
             </div>
             <div class="submit">
