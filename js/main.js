@@ -140,7 +140,9 @@ var app = new Vue({
                 success: function (resp) {
                     clearInterval(that.tik)
                     alert(resp.msg)
+                    that.getTopList()
                     that.submiting = false
+                    that.route = 'top'
                 },
                 error: function (err) {
                     alert('提交出错')
