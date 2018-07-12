@@ -73,7 +73,8 @@ var app = new Vue({
         },
         time: 0,
         tik: '',
-        error: []
+        error: [],
+        state: 0 // 0 未开始 1 正在打字
     },
     methods: {
         compareWords (item) {
@@ -175,7 +176,13 @@ var app = new Vue({
                 alert('请填写名称')
                 return false;
             }
-            this.time++
+            if (this.state) {
+                clearInterval(this.tik);
+                this.state = 0;
+                return false;
+            }
+            this.state = 1;
+            this.time++;
             this.tik = setInterval(function () {
                 that.updateTime()
             }, 1000)

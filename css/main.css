@@ -37,6 +37,11 @@ body {
     height: 100%;
     border: none;
 }
+.input-box, .start-btn, .normal-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
 .input-box:disabled {
     background-color: rgba(238, 238, 238, .5);
 }
@@ -123,4 +128,14 @@ body {
 .top-list li .time {
     float: right;
     color: #ff495b;
+}
+.start-btn {
+    padding: 5px 20px;
+    background-color: #3F51B5;
+    color: #fff;
+    outline: none;
+    border: none;
+    box-shadow: 1px 3px 0 #2e3bb5;
+    border-radius: 4px;
+    cursor: pointer;
 }
