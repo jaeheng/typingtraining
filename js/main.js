@@ -118,7 +118,7 @@ var app = new Vue({
             var that = this
             $.get('./toplist.json', function (resp) {
                 resp.sort(function (a, b) {
-                    return a.score - b.score;
+                    return b.score - a.score;
                 })
                 that.toplist = resp
                 that.loading = false;
