@@ -161,8 +161,10 @@ var app = new Vue({
             lines.map(function (item, index) {
                 if (!that.nextLine(index)) {
                     isOk = false
+                    console.log('index:' + index + ' is not ok')
                 }
-            })
+            });
+            console.log('isOK:', isOk)
             return isOk;
         },
         start () {
