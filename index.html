@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>张子恒的网络日志</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vue.js"></script>
+</head>
+<body onselectstart="return false">
+    <div class="page" id="app">
+        <h1 class="title"><span @click="route = 'index'">Typing training</span> <span @click="route = 'top'" class="top-link">排行榜</span></h1>
+        <p style="text-align: center;padding: 20px 0">
+            请输入你的姓名：<input type="text" class="normal-input" v-model="form.name" :disabled="time > 0"> <button @click="start">开始</button>
+            已进行了 {{ time }} 秒
+        </p>
+        <template v-if="route === 'index'">
+            <div class="line" v-for="(item, index) in line" :key="item.paraph">
+                <div class="erro">{{ error[index] }}</div>
+                <div class="paraph" v-html="item.paraphDisplay"></div>
+                <div class="paraph input">
+                    {{ item.paraph }}
+                    <input type="text" class="input-box" v-model="item.input" @input="compareWords(item)" :autofocus="active === index" :ref="'input-' + index" @keyup.enter="nextLine(index)" :maxlength="item.paraph.length" onpaste="return false;" :disabled="time === 0" @keydown.tab.prevent>
+                </div>
+            </div>
+            <div class="submit">
+                <button class="btn" @click="saveScore" :disabled="submiting">
+                    {{ submiting ? '提交中...' : '提交成绩' }}
+                </button>
+            </div>
+        </template>
+        <template v-if="route === 'top'">
+            <div style="padding: 40px 0;text-align: center" v-if="toplist.length === 0 && !loading">暂无数据</div>
+            <ul class="top-list">
+                <li v-if="loading">Loading...</li>
+                <li v-for="(item, index) in toplist">
+                    <span class="top">第{{ index + 1 }}名: </span>
+                    {{ item.name }} <span class="time">时间: {{ item.score }}s</span></li>
+            </ul>
+            <div class="submit">
+                <button class="btn" @click="route='index'">开始训练</button>
+            </div>
+        </template>
+    </div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

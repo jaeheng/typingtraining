@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    height: 100%;
+}
+body {
+    background-color: #eee;
+}
+.page {
+    width: 1024px;
+    margin: 50px auto;
+    background-color: #fff;
+    box-shadow: 5px 5px 0 #666, 0 0 10px #ccc;
+    padding: 2em;
+    border-radius: 4px;
+}
+.paraph {
+    line-height: 2;
+}
+.paraph, .input, .input-box {
+    font-size: 16px;
+    font-family: Consolas, Monaco, monospace;
+}
+.input {
+    border-bottom: 1px solid #ccc;
+    color: #eee;
+    position: relative;
+}
+.input-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.input-box:disabled {
+    background-color: rgba(238, 238, 238, .5);
+}
+.normal-input {
+    background-color: #fff;
+    border: 1px solid #eee;
+    outline: none;
+    padding: 5px;
+}
+.normal-input:focus {
+    border-color: #ccc;
+}
+.normal-input:disabled {
+    background-color: #eee;
+}
+.input-box:focus {
+    outline: none;
+    border: none;
+}
+.line {
+    margin-bottom: 2em;
+    position: relative;
+}
+.line .erro {
+    position: absolute;
+    font-size: 12px;
+    width: 100%;
+    color: #f00;
+    top: 100%;
+    left: 0;
+}
+.success {
+    color: #21bc4a;
+}
+.error {
+    color: #ff495b;
+}
+.title {
+    text-align: center;
+    line-height: 3;
+    color: #3F51B5;
+}
+.title span {
+    cursor: pointer;
+}
+.btn {
+    width: 300px;
+    padding: 10px;
+    background-color: #3F51B5;
+    color: #fff;
+    outline: none;
+    border: none;
+    box-shadow: 1px 3px 0 #2e3bb5;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn:active {
+    box-shadow: 1px 1px 0 #2e3bb5;
+}
+.btn:disabled {
+    background-color: #6576b5;
+}
+.submit {
+    padding: 20px 0 10px;
+    text-align: center;
+}
+.top-link {
+    font-size: 14px;
+    text-decoration: none;
+    color: #666;
+}
+.top-list {
+}
+.top-list li {
+    list-style: none;
+    line-height: 1.8;
+    border-bottom: 1px dashed #ccc;
+    padding: 10px 20px;
+    width: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+}
+.top-list li .time {
+    float: right;
+    color: #ff495b;
+}
