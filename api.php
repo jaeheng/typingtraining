@@ -17,12 +17,19 @@ if ($route === 'saveScore') {
 	$data[] = [ 'name' => $name, 'score' => $score ];
 
 	// 写文件
-	file_put_contents($topListFilePath, json_encode($data));
+	$res = file_put_contents($topListFilePath, json_encode($data), LOCK_EX);
 
-	echo json_encode([
-		'state' => 1,
-		'msg' => '成绩已经保存'
-	]);
+	if ($res) {
+		echo json_encode([
+			'state' => 1,
+			'msg' => '成绩已经保存'
+		]);
+	} else {
+		echo json_encode([
+			'state' => 0,
+			'msg' => '保存失败，请重试'
+		]);
+	}
 }
 
 if ($route === 'toplist') {
