@@ -105,6 +105,7 @@ var app = new Vue({
             return true;
         },
         nextLine (index) {
+            index = parseInt(index)
             var lines = this.line;
             // 判断本行是否填写完成
             if (this.checkLineOk(index)) {
@@ -159,7 +160,7 @@ var app = new Vue({
             var that = this
             var isOk = true
             lines.map(function (item, index) {
-                if (!that.nextLine(index)) {
+                if (!that.checkLineOk(index)) {
                     isOk = false
                     console.log('index:' + index + ' is not ok')
                 }
