@@ -73,6 +73,7 @@ body {
 }
 .error {
     color: #ff495b;
+    border-bottom: 1px solid #ff495b;
 }
 .title {
     text-align: center;
