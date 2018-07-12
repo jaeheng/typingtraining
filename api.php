@@ -3,10 +3,9 @@
 $route = $_GET['route'];
 
 $topListFilePath = './toplist.json';
-$data = json_decode($file);
-
 // 读文件
 $file = file_get_contents($topListFilePath);
+$data = json_decode($file);
 
 if ($route === 'saveScore') {
 	$post = $_POST;
@@ -18,7 +17,7 @@ if ($route === 'saveScore') {
 	$data[] = [ 'name' => $name, 'score' => $score ];
 
 	// 写文件
-	file_put_content($topListFilePath, json_encode($data))
+	file_put_contents($topListFilePath, json_encode($data));
 
 	echo json_encode([
 		'state' => 1,
