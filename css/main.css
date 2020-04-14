@@ -37,6 +37,9 @@ body {
     height: 100%;
     border: none;
 }
+.input-box[readonly=readonly] {
+    background-color: rgba(238, 238, 238, .5);
+}
 .input-box, .start-btn, .normal-input {
     -webkit-appearance: none;
     -moz-appearance: none;

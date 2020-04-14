@@ -23,13 +23,13 @@ var app = new Vue({
                 input: ''
             },
             {
-                paraph: '"We hold these truths to be self-evident, that all men are created equal."',
-                paraphDisplay: '"We hold these truths to be self-evident, that all men are created equal."',
+                paraph: 'We hold these truths to be self-evident, that all men are created equal.',
+                paraphDisplay: 'We hold these truths to be self-evident, that all men are created equal.',
                 input: ''
             },
             {
-                paraph: 'I have a dream that one day on the red hills of Georgia,the sons of former',
-                paraphDisplay: 'I have a dream that one day on the red hills of Georgia,the sons of former',
+                paraph: 'I have a dream that one day on the red hills of Georgia, the sons of former',
+                paraphDisplay: 'I have a dream that one day on the red hills of Georgia, the sons of former',
                 input: ''
             },
             {
@@ -63,7 +63,7 @@ var app = new Vue({
                 input: ''
             }
         ],
-        active: 0,
+        active: -1,
         route: 'index',
         toplist: [],
         loading: true,
@@ -91,6 +91,7 @@ var app = new Vue({
                 }
             });
             item.paraphDisplay = paraph.join('')
+            this.saveScore()
         },
         checkLineOk (index) {
             var line = this.line[index];
@@ -171,7 +172,7 @@ var app = new Vue({
         },
         start () {
             var that = this
-            var name = this.form.name
+            var name = this.form.name.trim()
             if (name === '') {
                 alert('请填写名称')
                 return false;
@@ -181,6 +182,7 @@ var app = new Vue({
                 this.state = 0;
                 return false;
             }
+            this.active = 0;
             this.state = 1;
             this.time++;
             this.tik = setInterval(function () {

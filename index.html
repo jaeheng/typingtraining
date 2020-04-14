@@ -14,24 +14,22 @@
         <h1 class="title"><span @click="route = 'index'">Typing training</span> <span @click="route = 'top'" class="top-link">排行榜</span></h1>
         <template v-if="route === 'index'">
             <p style="text-align: center;padding: 20px 0">
-                请输入你的姓名：<input type="text" class="normal-input" v-model="form.name" :disabled="time > 0">
+                请输入你的姓名：<input type="text" class="normal-input" v-model="form.name" :disabled="time > 0" @keyup.enter="start">
                 <button @click="start" class="start-btn">
                     {{ state ? '停止' : '开始' }}
                 </button>
                 已进行了 {{ time }} 秒
             </p>
             <div class="line" v-for="(item, index) in line" :key="item.paraph">
-                <div class="erro">{{ error[index] }}</div>
+                <div class="erro" style="display: none;">{{ error[index] }}</div>
                 <div class="paraph" v-html="item.paraphDisplay"></div>
                 <div class="paraph input">
                     {{ item.paraph }}
-                    <input type="text" class="input-box" v-model="item.input" @input="compareWords(item)" :autofocus="active === index" :ref="'input-' + index" @keyup.enter="nextLine(index)" :maxlength="item.paraph.length" onpaste="return false;" :disabled="!state" @keydown.tab.prevent>
+                    <input type="text" class="input-box" v-model="item.input" @input="compareWords(item)" :ref="'input-' + index" @keyup.enter="nextLine(index)" :maxlength="item.paraph.length" onpaste="return false;" :readonly="!state || active !== index" @keydown.tab.prevent>
                 </div>
             </div>
             <div class="submit">
-                <button class="btn" @click="saveScore" :disabled="submiting">
-                    {{ submiting ? '提交中...' : '提交成绩' }}
-                </button>
+               {{ submiting ? '提交中...' : '打完字自动提交成绩' }}
             </div>
         </template>
         <template v-if="route === 'top'">
