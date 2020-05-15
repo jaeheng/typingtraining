@@ -11,7 +11,7 @@
 </head>
 <body onselectstart="return false">
     <div class="page" id="app">
-        <h1 class="title"><span @click="route = 'index'">Typing training</span> <span @click="route = 'top'" class="top-link">排行榜</span></h1>
+        <h1 class="title"><span @click="go('index')">Typing training</span> <span @click="go('top')" class="top-link">排行榜</span></h1>
         <template v-if="route === 'index'">
             <p style="text-align: center;padding: 20px 0">
                 请输入你的姓名：<input type="text" class="normal-input" v-model="form.name" :disabled="time > 0">

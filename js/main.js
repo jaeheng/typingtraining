@@ -195,9 +195,12 @@ var app = new Vue({
             }, 1000)
             this.$refs['input-0'][0].focus();
             localStorage.setItem('typetest-name', name);
+        },
+        go (type) {
+            this.route = type
+            if (type === 'top') {
+                this.getTopList()
+            }
         }
-    },
-    mounted () {
-        this.getTopList()
     }
 })
