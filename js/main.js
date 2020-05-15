@@ -3,33 +3,33 @@ var app = new Vue({
     data: {
         line: [
             {
-                paraph: 'Let us not wallow in the valley of despair, I say to you today, my friends.',
-                paraphDisplay: 'Let us not wallow in the valley of despair, I say to you today, my friends.',
+                paraph: 'let us not wallow in the valley of despair, i say to you today, my friends.',
+                paraphDisplay: 'let us not wallow in the valley of despair, i say to you today, my friends.',
                 input: ''
             },
             {
-                paraph: 'And so even though we face the difficulties of today and tomorrow, I still have a dream.',
-                paraphDisplay: 'And so even though we face the difficulties of today and tomorrow, I still have a dream.',
+                paraph: 'and so even though we face the difficulties of today and tomorrow, i still have a dream.',
+                paraphDisplay: 'and so even though we face the difficulties of today and tomorrow, i still have a dream.',
                 input: ''
             },
             {
-                paraph: 'It is a dream deeply rooted in the American dream.',
-                paraphDisplay: 'It is a dream deeply rooted in the American dream.',
+                paraph: 'it is a dream deeply rooted in the american dream.',
+                paraphDisplay: 'it is a dream deeply rooted in the american dream.',
                 input: ''
             },
             {
-                paraph: 'I have a dream that one day this nation will rise up and live out the true meaning of its creed:',
-                paraphDisplay: 'I have a dream that one day this nation will rise up and live out the true meaning of its creed:',
+                paraph: 'i have a dream that one day this nation will rise up and live out the true meaning of its creed',
+                paraphDisplay: 'i have a dream that one day this nation will rise up and live out the true meaning of its creed',
                 input: ''
             },
             {
-                paraph: 'We hold these truths to be self-evident, that all men are created equal.',
-                paraphDisplay: 'We hold these truths to be self-evident, that all men are created equal.',
+                paraph: 'we hold these truths to be self-evident, that all men are created equal.',
+                paraphDisplay: 'we hold these truths to be self-evident, that all men are created equal.',
                 input: ''
             },
             {
-                paraph: 'I have a dream that one day on the red hills of Georgia, the sons of former',
-                paraphDisplay: 'I have a dream that one day on the red hills of Georgia, the sons of former',
+                paraph: 'i have a dream that one day on the red hills of georgia, the sons of former',
+                paraphDisplay: 'i have a dream that one day on the red hills of georgia, the sons of former',
                 input: ''
             },
             {
@@ -38,8 +38,8 @@ var app = new Vue({
                 input: ''
             },
             {
-                paraph: 'I have a dream that one day even the state of Mississippi, a state sweltering with the heat of injustice,',
-                paraphDisplay: 'I have a dream that one day even the state of Mississippi, a state sweltering with the heat of injustice,',
+                paraph: 'i have a dream that one day even the state of mississippi, a state sweltering with the heat of injustice,',
+                paraphDisplay: 'i have a dream that one day even the state of mississippi, a state sweltering with the heat of injustice,',
                 input: ''
             },
             {
@@ -48,8 +48,8 @@ var app = new Vue({
                 input: ''
             },
             {
-                paraph: 'I have a dream that my four little children will one day live in a nation where',
-                paraphDisplay: 'I have a dream that my four little children will one day live in a nation where',
+                paraph: 'i have a dream that my four little children will one day live in a nation where',
+                paraphDisplay: 'i have a dream that my four little children will one day live in a nation where',
                 input: ''
             },
             {
@@ -58,12 +58,12 @@ var app = new Vue({
                 input: ''
             },
             {
-                paraph: 'I have a dream today!',
-                paraphDisplay: 'I have a dream today!',
+                paraph: 'i have a dream today',
+                paraphDisplay: 'i have a dream today',
                 input: ''
             }
         ],
-        active: -1,
+        active: 0,
         route: 'index',
         toplist: [],
         loading: true,
@@ -78,6 +78,7 @@ var app = new Vue({
     },
     methods: {
         compareWords (item) {
+            this.start()
             var inputArr = item.input.split('');
             var paraph = item.paraph.split('');
             if (item.input.length > item.paraph.length) {
@@ -119,7 +120,8 @@ var app = new Vue({
         },
         getTopList () {
             var that = this
-            $.get('./toplist.json', function (resp) {
+            var time = Date.now()
+            $.get('./toplist.json?time=' + time, function (resp) {
                 resp.sort(function (a, b) {
                     return a.score - b.score;
                 })
@@ -178,10 +180,13 @@ var app = new Vue({
                 return false;
             }
             if (this.state) {
-                clearInterval(this.tik);
-                this.state = 0;
-                return false;
+                return false
             }
+            //if (this.state) {
+            //    clearInterval(this.tik);
+            //    this.state = 0;
+            //    return false;
+            //}
             this.active = 0;
             this.state = 1;
             this.time++;
