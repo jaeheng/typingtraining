@@ -71,9 +71,9 @@ var app = new Vue({
         saveScore () {
             var form = this.form
             var that = this
-            // if (!this.checkWordsOk()) {
-            //     return false;
-            // }
+            if (!this.checkWordsOk()) {
+                return false;
+            }
             form.name = form.name || '匿名'
             form.score = this.time
             this.submiting = true
