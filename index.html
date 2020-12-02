@@ -6,8 +6,9 @@
     <meta name="keywords" content="打字训练游戏,打字训练"/>
     <meta name="description" content="张子恒的打字训练小游戏"/>
     <title>Typing training - 打字训练小游戏</title>
+    <link rel="stylesheet" href="node_modules/nprogress/nprogress.css">
+    <link rel="stylesheet" href="css/toastify.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 <body onselectstart="return false">
     <div class="page" id="app">
@@ -22,7 +23,17 @@
                 <div class="paraph" v-html="item.paraphDisplay"></div>
                 <div class="paraph input">
                     {{ item.paraph }}
-                    <input type="text" class="input-box" v-model="item.input" @input="compareWords(item)" :ref="'input-' + index" @keyup.enter="nextLine(index)" :maxlength="item.paraph.length" onpaste="return false;" :readonly="active !== index" @keydown.tab.prevent>
+                    <input
+                            type="text"
+                            class="input-box"
+                            v-model="item.input"
+                            @input="compareWords(item)"
+                            :ref="'input-' + index"
+                            @keyup.enter="nextLine(index)"
+                            :maxlength="item.paraph.length"
+                            onpaste="return false;"
+                            :readonly="active !== index"
+                            @keydown.tab.prevent>
                 </div>
             </div>
             <div class="submit">
@@ -30,9 +41,8 @@
             </div>
         </template>
         <template v-if="route === 'top'">
-            <div style="padding: 40px 0;text-align: center" v-if="toplist.length === 0 && !loading">暂无数据</div>
+            <div style="padding: 40px 0;text-align: center" v-if="toplist.length === 0">暂无数据</div>
             <ul class="top-list">
-                <li v-if="loading">Loading...</li>
                 <li v-for="(item, index) in toplist">
                     <span class="top">第{{ index + 1 }}名: </span>
                     {{ item.name }} <span class="time">时间: {{ item.score }}s</span></li>
@@ -42,7 +52,10 @@
             </div>
         </template>
     </div>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <script src="node_modules/nprogress/nprogress.js"></script>
+    <script src="script/toastify-js.js"></script>
+    <script src="script/main.js"></script>
 </body>
 </html>

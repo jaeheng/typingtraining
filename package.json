@@ -1,0 +1,29 @@
+{
+  "name": "typingtraining",
+  "version": "1.0.0",
+  "description": "typing training game",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "nprogress": "^0.2.0",
+    "vue": "^2.6.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaeheng/typingtraining.git"
+  },
+  "keywords": [
+    "typing",
+    "training"
+  ],
+  "author": "jaeheng <jaeheng@126.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jaeheng/typingtraining/issues"
+  },
+  "homepage": "https://github.com/jaeheng/typingtraining#readme"
+}
