@@ -155,7 +155,7 @@ var app = new Vue({
         getArticle () {
             const that = this
             NProgress.start()
-            axios.get('api.php?route=article').then(function (resp) {
+            axios.get('/article/1.json').then(function (resp) {
                 const data = resp.data
                 if (data) {
                     that.line = data.map(line => {
